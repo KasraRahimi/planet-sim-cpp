@@ -3,11 +3,11 @@ CC=g++
 CFlags=-Wall
 
 # directories
-LIB_DIR=../lib_dir/target
-INC_DIR=../lib_dir/include
+LIB_DIR=-L../lib_dir/target -L/usr/lib/x86_64-linux-gnu/
+INC_DIR=-I../lib_dir/include -I/usr/include/SDL2
 
 # files
-LIB=PlanetSim
+LIB=-lPlanetSim -lSDL2
 SRC=main.cpp
 TRG=$(SRC:.cpp=)
 
@@ -16,7 +16,7 @@ all: $(TRG)
 
 # compiling the target
 $(TRG): $(SRC)
-	$(CC) $^ -o $@ -l$(LIB) -L $(LIB_DIR) -I $(INC_DIR)
+	$(CC) $^ -o $@ $(LIB) $(LIB_DIR) $(INC_DIR)
 
 # running it
 run: $(TRG)
