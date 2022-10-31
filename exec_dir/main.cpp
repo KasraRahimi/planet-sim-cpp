@@ -18,7 +18,6 @@ int main() {
             switch (event.type) {
                 case SDL_QUIT:
                     isRunning = false;
-                    exit(0);
                     break;
                 default:
                     break;
