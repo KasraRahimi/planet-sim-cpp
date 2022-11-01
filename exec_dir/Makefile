@@ -3,8 +3,8 @@ CC=g++
 CFlags=-Wall
 
 # directories
-LIB_DIR=-L../lib_dir/target -L/usr/lib/x86_64-linux-gnu/
-INC_DIR=-I../lib_dir/include -I/usr/include/SDL2
+LIB_DIR=-L../lib_dir/target
+INC_DIR=-I../lib_dir/include
 
 # files
 LIB=-lPlanetSim -lSDL2
