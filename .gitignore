@@ -6,4 +6,5 @@
 !*.h
 !Makefile
 !*/
+!*.md
 !.gitignore
