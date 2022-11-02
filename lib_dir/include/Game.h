@@ -67,4 +67,9 @@ public:
      * Calls the SDL_RenderClear method
     */
     void clearRender();
+
+    /**
+     * Calls the SDL_RenderPresent method
+    */
+    void presentRender();
 };
