@@ -1,6 +1,7 @@
 #pragma once
 #include <cmath>
 #include <vector>
+#include <Color.h>
 
 struct Vec { 
     double x, y;
@@ -11,6 +12,7 @@ class Planet {
 private:
     double mass_, x_, y_, dx_, dy_;
     int radius_;
+    Color color_;
     const double G = 6.674e-11;
     std::vector<Planet*>* planetSystem_;
 
@@ -19,11 +21,12 @@ private:
     Vec sumOfForces();
 
 public:
-    Planet(double mass, int radius_, double x, double y, double dx, double dy, std::vector<Planet*>* system);
+    Planet(double mass, int radius_, Color color, double x, double y, double dx, double dy, std::vector<Planet*>* system);
     double getX();
     double getY();
     double getMass();
     int getRadius();
+    Color getColor();
     void move(const double timestep);
     Vec positionOnScreen(double width, double height, double scale);
 };

@@ -31,13 +31,14 @@ Vec Planet::sumOfForces() {
     return { forceInX, forceInY };
 }
 
-Planet::Planet(double mass, int radius, double x, double y, double dx, double dy, std::vector<Planet*>* system) {
+Planet::Planet(double mass, int radius, Color color, double x, double y, double dx, double dy, std::vector<Planet*>* system) {
     x_ = x;
     y_ = y;
     dx_ = dx;
     dy_ = dy;
     mass_ = mass;
     radius_ = radius;
+    color_ = color;
     system->push_back(this);
     planetSystem_ = system;
 }
@@ -49,6 +50,8 @@ double Planet::getY() { return y_; }
 double Planet::getMass() { return mass_; }
 
 int Planet::getRadius() { return radius_; }
+
+Color Planet::getColor() { return color_; }
 
 void Planet::move(const double timestep) {
     x_ += dx_ * timestep;
