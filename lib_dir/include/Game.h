@@ -6,6 +6,8 @@ struct Color
     Uint8 r, g, b, a;
 };
 
+enum class Shape { SQUARE, CIRCLE, RECTANGLE };
+
 
 class Game {
 
@@ -16,10 +18,7 @@ private:
     bool isRunning_;
 
     void windowInit(const char* name, int width, int height);
-
     void rendererInit(SDL_RendererFlags flags);
-
-    void setRenderColor(Color color);
 
 public:
     Game() = default;
@@ -47,4 +46,14 @@ public:
 */
     void handleEvents();
 
+    /**
+     * Draws a rectangle definied by parameters the user enters
+     * 
+     * \param color the color of the rectangle
+     * \param x the x position of the top left corner
+     * \param y the y position of the top left corner
+     * \param w the width of the rectangle
+     * \param h the height of the rectangle
+    */
+    void drawRect(Color color, int x, int y, int w, int h);
 };
