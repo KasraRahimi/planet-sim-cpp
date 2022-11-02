@@ -5,7 +5,7 @@
 
 #define WIDTH 720
 #define HEIGHT 480
-#define FPS 1
+#define FPS 30
 #define TIME_PER_FRAME 1000/FPS
 #define SCALE 1/10e8
 #define TIMESTEP 3600 * 12
