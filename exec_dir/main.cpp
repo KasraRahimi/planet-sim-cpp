@@ -15,6 +15,7 @@ int main() {
     int x = 0, y = 0;
     while (game.getIsRunning()) {
         timer.reset();
+        game.clearRender();
         game.handleEvents();
         game.drawRect(red, x, y, 100, 200);
         x++;
