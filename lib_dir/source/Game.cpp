@@ -38,6 +38,19 @@ void Game::drawRect(Color color, int x, int y, int w, int h) {
     SDL_RenderPresent(renderer_);
 }
 
+void Game::drawCircle(Color color, int radius, int x, int y) {
+    SDL_SetRenderDrawColor(renderer_, color.r, color.g, color.b, color.a);
+    int rsquared = radius * radius;
+    for (int i = x - radius; i < x + radius; i++) {
+        for (int j = y - radius; j < y + radius; j++) {
+            if (((i - x) * (i - x)) + ((j - y) * (j - y)) < rsquared)
+                SDL_RenderDrawPoint(renderer_, i, j);
+        }
+    }
+    SDL_SetRenderDrawColor(renderer_, 0, 0, 0, 255);
+    SDL_RenderPresent(renderer_);
+}
+
 void Game::clearRender() {
     SDL_RenderClear(renderer_);
 }

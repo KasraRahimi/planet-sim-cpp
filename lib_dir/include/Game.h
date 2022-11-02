@@ -58,6 +58,16 @@ public:
     void drawRect(Color color, int x, int y, int w, int h);
 
     /**
+     * Draws a circles to the renderer
+     * 
+     * \param color the color of the circle
+     * \param radius the radius
+     * \param x x position of the center of the cirlce
+     * \param y y position of the center of the circle
+    */
+    void drawCircle(Color color, int radius, int x, int y);
+
+    /**
      * Calls the SDL_RenderClear method
     */
     void clearRender();
