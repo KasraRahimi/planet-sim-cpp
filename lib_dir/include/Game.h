@@ -22,28 +22,28 @@ private:
 
 public:
     Game() = default;
-/**
- * Initialize the game by creating a window and renderer.
- * The user establishes certain parameters for the game window and render.
- * 
- * \param SDLFlags the flags for the SDL_Init function
- * \param name the name of the window
- * \param width the width of the window
- * \param height the height of the window
- * \param flags the flags for the renderer
-*/
+    /**
+     * Initialize the game by creating a window and renderer.
+     * The user establishes certain parameters for the game window and render.
+     * 
+     * \param SDLFlags the flags for the SDL_Init function
+     * \param name the name of the window
+     * \param width the width of the window
+     * \param height the height of the window
+     * \param flags the flags for the renderer
+    */
     Game(Uint32 SDLFlags, const char name[], int width, int height, SDL_RendererFlags rendererFlags);
 
-/**
- * The getter for the isRunning boolean.
- * This is used as the condition for the game loop
- * \returns true if game is running, false if not
-*/
+    /**
+     * The getter for the isRunning boolean.
+     * This is used as the condition for the game loop
+     * \returns true if game is running, false if not
+    */
     bool getIsRunning() const;
 
-/**
- * Handles game events such as quitting.
-*/
+    /**
+     * Handles game events such as quitting.
+    */
     void handleEvents();
 
     /**
@@ -56,4 +56,9 @@ public:
      * \param h the height of the rectangle
     */
     void drawRect(Color color, int x, int y, int w, int h);
+
+    /**
+     * Calls the SDL_RenderClear method
+    */
+    void clearRender();
 };
