@@ -18,8 +18,8 @@ int main() {
     Timer timer;
 
     std::vector<Planet*> solarSystem;
-    Planet earth(EARTH_MASS, 20, 0, 0, 0, 0, &solarSystem);
-    Planet moon(0.012 * EARTH_MASS, 10, 384400000, 0, 0, -1022, &solarSystem);
+    Planet earth(EARTH_MASS, 10, 0, 0, 0, 0, &solarSystem);
+    Planet moon(0.012 * EARTH_MASS, 5, 384400000, 0, 0, -1022, &solarSystem);
 
     while (game.getIsRunning()) {
         timer.reset();
