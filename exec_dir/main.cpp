@@ -5,7 +5,7 @@
 
 #define WIDTH 720
 #define HEIGHT 480
-#define FPS 30
+#define FPS 60
 #define TIME_PER_FRAME 1000/FPS
 #define SCALE 1/10e8
 #define TIMESTEP 3600 * 12
@@ -25,9 +25,9 @@ int main() {
     std::vector<Planet*> solarSystem;
     Planet sun(1.989e30, 20, YELLOW, 0, 0, 0, 0, &solarSystem);
     Planet mercury(0.055 * EARTH_MASS, 5, GREY, 60e9, 0, 0, -47e3, &solarSystem);
-    Planet venus(0.815 * EARTH_MASS, 12, ORANGE, 109e9, 0, 0, -35e3, &solarSystem);
+    Planet venus(0.815 * EARTH_MASS, 8, ORANGE, 109e9, 0, 0, -35e3, &solarSystem);
     Planet earth(EARTH_MASS, 10, BLUE, 150e9, 0, 0, -30e3, &solarSystem);
-    Planet mars(0.107 * EARTH_MASS, 8, RED, 225e9, 0, 0, -24e3, &solarSystem);
+    Planet mars(0.107 * EARTH_MASS, 7, RED, 225e9, 0, 0, -24e3, &solarSystem);
 
     while (game.getIsRunning()) {
         timer.reset();
@@ -40,6 +40,7 @@ int main() {
             game.drawCircle((*planet)->getColor(), radius, position.x, position.y);
             (*planet)->move(TIMESTEP);
         }
+        game.presentRender();
         if (timer.elapsedTime() < TIME_PER_FRAME)
             SDL_Delay(TIME_PER_FRAME - timer.elapsedTime());
     }
