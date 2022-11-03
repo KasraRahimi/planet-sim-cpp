@@ -33,8 +33,7 @@ int main() {
         timer.reset();
         game.clearRender();
         game.handleEvents();
-        for (std::vector<Planet*>::iterator planet = solarSystem.begin(); planet < solarSystem.end(); planet++)
-        {
+        for_planet_in(solarSystem) {
             Vec position = (*planet)->positionOnScreen(WIDTH, HEIGHT, SCALE);
             int radius = (*planet)->getRadius();
             game.drawCircle((*planet)->getColor(), radius, position.x, position.y);
