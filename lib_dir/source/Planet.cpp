@@ -12,7 +12,7 @@ Vec Planet::distanceWith(Planet other) {
 
 Vec Planet::forceWith(Planet other) {
     Vec distance = distanceWith(other);
-    double forceMagnitude = G * mass_ * other.getMass() / pow(distance.getMagnitude(), 2);
+    double forceMagnitude = G * mass_ * other.mass_ / pow(distance.getMagnitude(), 2);
     Vec force;
     force.x = forceMagnitude * distance.x / distance.getMagnitude();
     force.y = forceMagnitude * distance.y / distance.getMagnitude();
