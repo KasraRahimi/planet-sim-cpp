@@ -2,6 +2,8 @@
 #include <cmath>
 #include <vector>
 #include <Color.h>
+#define for_planet_in(system) for (std::vector<Planet*>::iterator planet = system.begin(); planet < system.end(); planet++)
+
 
 struct Vec { 
     double x, y;

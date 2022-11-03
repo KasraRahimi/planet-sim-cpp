@@ -21,7 +21,7 @@ Vec Planet::forceWith(Planet other) {
 
 Vec Planet::sumOfForces() {
     double forceInX = 0, forceInY = 0;
-    for (std::vector<Planet*>::iterator planet = planetSystem_->begin(); planet < planetSystem_->end(); planet++) {
+    for_planet_in((*planetSystem_)) {
         if ((*planet)->getX() == x_ || (*planet)->getY() == y_)
             continue;
         Vec force = forceWith(**planet);
