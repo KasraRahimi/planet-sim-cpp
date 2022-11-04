@@ -4,6 +4,10 @@ double Vec::getMagnitude() {
     return sqrt((x * x) + (y * y));
 }
 
+Vec Vec::operator-(Vec other) {
+    return { other.x - x, other.y - y};
+}
+
 Vec Planet::distanceWith(Planet other) {
     double deltax = other.x_ - x_;
     double deltay = other.y_ - y_;
@@ -65,5 +69,11 @@ void Planet::move(const double timestep) {
 Vec Planet::positionOnScreen(double width, double height, double scale) {
     double relativeX = x_ * scale + (width / 2);
     double relativeY = y_ * scale + (height / 2);
+    return { relativeX, relativeY };
+}
+
+Vec Planet::positionOnScreen(double width, double height, double scale, Planet centerPlanet) {
+    double relativeX = (x_ - centerPlanet.x_) * scale + (width / 2);
+    double relativeY = (y_ - centerPlanet.y_) * scale + (height / 2);
     return { relativeX, relativeY };
 }

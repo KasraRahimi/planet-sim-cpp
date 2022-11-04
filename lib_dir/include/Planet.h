@@ -8,6 +8,7 @@
 struct Vec { 
     double x, y;
     double getMagnitude();
+    Vec operator-(Vec other);
 };
 
 class Planet {
@@ -87,4 +88,9 @@ public:
      * \return a Vec object with the x and y position on the window
     */
     Vec positionOnScreen(double width, double height, double scale);
+
+    /**
+     * 
+    */
+    Vec positionOnScreen(double width, double height, double scale, Planet CenterPlanet);
 };
