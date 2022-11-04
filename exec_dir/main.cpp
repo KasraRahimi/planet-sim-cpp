@@ -34,7 +34,7 @@ int main() {
         game.clearRender();
         game.handleEvents();
         for_planet_in(solarSystem) {
-            Vec position = (*planet)->positionOnScreen(WIDTH, HEIGHT, SCALE);
+            Vec position = (*planet)->positionOnScreen(WIDTH, HEIGHT, SCALE, sun);
             int radius = (*planet)->getRadius();
             game.drawCircle((*planet)->getColor(), radius, position.x, position.y);
             (*planet)->move(TIMESTEP);
