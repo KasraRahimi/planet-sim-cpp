@@ -21,6 +21,7 @@ const Color ORANGE = { 255, 128, 0, 255 };
 int main() {
     Game game(SDL_INIT_EVERYTHING, "My Game", WIDTH, HEIGHT, SDL_RENDERER_ACCELERATED);
     Timer timer;
+    SDL_Event event;
 
     std::vector<Planet*> solarSystem;
     Planet sun(1.989e30, 20, YELLOW, 0, 0, 0, 0, &solarSystem);
@@ -29,12 +30,37 @@ int main() {
     Planet earth(EARTH_MASS, 10, BLUE, 150e9, 0, 0, -30e3, &solarSystem);
     Planet mars(0.107 * EARTH_MASS, 7, RED, 225e9, 0, 0, -24e3, &solarSystem);
 
+    size_t index = 0;
+
     while (game.getIsRunning()) {
         timer.reset();
         game.clearRender();
-        game.handleEvents();
+        while (SDL_PollEvent(&event)) {
+            switch (event.type) {
+                case SDL_QUIT:
+                    game.quit();
+                    break;
+                case SDL_KEYDOWN:
+                    switch (event.key.keysym.sym) {
+                        case SDLK_RIGHT:
+                            if (++index >= solarSystem.size())
+                                index = 0;
+                            break;
+                        case SDLK_LEFT:
+                            if (index == 0)
+                                index = solarSystem.size() - 1;
+                            else
+                                --index;
+                            break;
+                        default:
+                            break;
+                    }
+                default:
+                    break;
+            }
+        }
         for_planet_in(solarSystem) {
-            Vec position = (*planet)->positionOnScreen(WIDTH, HEIGHT, SCALE, sun);
+            Vec position = (*planet)->positionOnScreen(WIDTH, HEIGHT, SCALE, *solarSystem[index]);
             int radius = (*planet)->getRadius();
             game.drawCircle((*planet)->getColor(), radius, position.x, position.y);
             (*planet)->move(TIMESTEP);
