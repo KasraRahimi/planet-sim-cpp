@@ -3,8 +3,8 @@
 #include <Planet.h>
 #include <Timer.h>
 
-#define WIDTH 720
-#define HEIGHT 480
+#define WIDTH 1024
+#define HEIGHT 576
 #define FPS 60
 #define TIME_PER_FRAME 1000/FPS
 #define SCALE 1/10e8
@@ -52,6 +52,8 @@ int main() {
                             else
                                 --index;
                             break;
+                        case SDLK_F11:
+                            game.toggleFullScreen();
                         default:
                             break;
                     }
