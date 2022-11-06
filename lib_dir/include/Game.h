@@ -10,7 +10,6 @@ class Game {
 private:
     SDL_Window* window_;
     SDL_Renderer* renderer_;
-    SDL_Event event_;
     bool isRunning_;
 
     void windowInit(const char* name, int width, int height);
@@ -38,9 +37,9 @@ public:
     bool getIsRunning() const;
 
     /**
-     * Handles game events such as quitting.
+     * Sets isRunning_ attribute to false
     */
-    void handleEvents();
+    void quit();
 
     /**
      * Draws a rectangle definied by parameters the user enters

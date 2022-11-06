@@ -18,17 +18,7 @@ bool Game::getIsRunning() const {
     return isRunning_;
 }
 
-void Game::handleEvents() {
-    while(SDL_PollEvent(&event_)) {
-        switch (event_.type) {
-        case SDL_QUIT:
-            isRunning_ = false;
-            break;
-        default:
-            break;
-        }
-    }
-}
+void Game::quit() { isRunning_ = false; }
 
 void Game::drawRect(Color color, int x, int y, int w, int h) {
     SDL_Rect rect = { x, y, w, h };
