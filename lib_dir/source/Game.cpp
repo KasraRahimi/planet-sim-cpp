@@ -46,3 +46,11 @@ void Game::clearRender() {
 void Game::presentRender() {
     SDL_RenderPresent(renderer_);
 }
+
+void Game::toggleFullScreen() {
+    isFullScreen_ = !isFullScreen_;
+    if (isFullScreen_)
+        SDL_SetWindowFullscreen(window_, SDL_WINDOW_FULLSCREEN);
+    else
+        SDL_SetWindowFullscreen(window_, 0);
+}

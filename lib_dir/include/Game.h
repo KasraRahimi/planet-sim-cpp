@@ -10,7 +10,7 @@ class Game {
 private:
     SDL_Window* window_;
     SDL_Renderer* renderer_;
-    bool isRunning_;
+    bool isRunning_, isFullScreen_ = false;
 
     void windowInit(const char* name, int width, int height);
     void rendererInit(SDL_RendererFlags flags);
@@ -71,4 +71,6 @@ public:
      * Calls the SDL_RenderPresent method
     */
     void presentRender();
+
+    void toggleFullScreen();
 };
