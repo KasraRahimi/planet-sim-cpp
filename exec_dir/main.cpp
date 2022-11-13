@@ -1,12 +1,10 @@
 #include <iostream>
 #include <Game.h>
 #include <Planet.h>
-#include <Timer.h>
 
 #define WIDTH 1024
 #define HEIGHT 576
 #define FPS 60
-#define TIME_PER_FRAME 1000/FPS
 #define SCALE 1/10e8
 #define TIMESTEP 3600 * 12
 #define EARTH_MASS 5.972e24
@@ -20,7 +18,6 @@ const Color ORANGE = { 255, 128, 0, 255 };
 
 int main() {
     Game game(SDL_INIT_EVERYTHING, "My Game", WIDTH, HEIGHT, SDL_RENDERER_ACCELERATED);
-    Timer timer;
     SDL_Event event;
 
     std::vector<Planet*> solarSystem;
@@ -33,7 +30,6 @@ int main() {
     size_t index = 0;
 
     while (game.getIsRunning()) {
-        timer.reset();
         game.clearRender();
         while (SDL_PollEvent(&event)) {
             switch (event.type) {
@@ -68,8 +64,7 @@ int main() {
             (*planet)->move(TIMESTEP);
         }
         game.presentRender();
-        if (timer.elapsedTime() < TIME_PER_FRAME)
-            SDL_Delay(TIME_PER_FRAME - timer.elapsedTime());
+        game.handleFramerate(FPS);
     }
     return 0;
 }
