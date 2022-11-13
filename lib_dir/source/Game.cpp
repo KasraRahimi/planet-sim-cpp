@@ -54,3 +54,10 @@ void Game::toggleFullScreen() {
     else
         SDL_SetWindowFullscreen(window_, 0);
 }
+
+void Game::handleFramerate(unsigned FPS) {
+    unsigned timePerFrame = unsigned(1000 / double(FPS));
+    if (timer_.elapsedTime() < timePerFrame)
+        SDL_Delay(timePerFrame - timer_.elapsedTime());
+    timer_.reset();
+}

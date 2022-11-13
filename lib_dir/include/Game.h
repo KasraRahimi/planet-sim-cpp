@@ -1,20 +1,12 @@
 #pragma once
 #include <SDL2/SDL.h>
+#include <Timer.h>
 #include <Color.h>
 
 enum class Shape { SQUARE, CIRCLE, RECTANGLE };
 
 
 class Game {
-
-private:
-    SDL_Window* window_;
-    SDL_Renderer* renderer_;
-    bool isRunning_, isFullScreen_ = false;
-
-    void windowInit(const char* name, int width, int height);
-    void rendererInit(SDL_RendererFlags flags);
-
 public:
     Game() = default;
     /**
@@ -73,4 +65,15 @@ public:
     void presentRender();
 
     void toggleFullScreen();
+
+    void handleFramerate(unsigned FPS = 60);
+private:
+    SDL_Window* window_;
+    SDL_Renderer* renderer_;
+    Timer timer_;
+    bool isRunning_, isFullScreen_ = false;
+
+    void windowInit(const char* name, int width, int height);
+    void rendererInit(SDL_RendererFlags flags);
+
 };
